@@ -46,7 +46,7 @@ export default function AddNewStudents() {
                 dateofbirth: "",
                 email: ""
             });
-            setNotification("");
+
         } catch (error) {
             console.error("Error:", error);
         }
