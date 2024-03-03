@@ -6,3 +6,10 @@
   display: flex;
   justify-content: center;
 }
+
+.active-link {
+  color: rgba(233, 235, 237, 0.653) !important;
+  text-decoration: underline !important;
+  font-weight: bolder !important;
+  font-size: large !important;;
+}

@@ -14,31 +14,24 @@ export default function AddNewStudents() {
     const {firstname, familyname, dateofbirth, email} =  student;
     const [notification, setNotification] = useState("");
     const [emailError, setEmailError] = useState("");
+    const [dobError, setDobError] = useState("");
 
     const onInputChange=(e)=>{
       setStudent({...student, [e.target.name]:e.target.value});
-      if (e.target.name === 'email') {
-        setEmailError(validator.isEmail(e.target.value) ? "" : "Please enter a valid email address");
-    }
+        if (e.target.name === 'email') {
+            setEmailError(validator.isEmail(e.target.value) ? "" : "Please enter a valid email address!!!");
+        }
+        if (e.target.name === 'dateofbirth') {
+            const currentDate = new Date();
+            const birthDate = new Date(dateofbirth);
+            const diffInYears = (currentDate - birthDate) / (1000 * 60 * 60 * 24 * 365);
+            setDobError(diffInYears < 10 ? "The student must be at least 10 years old" : "");
+        }
     }
 
     const onSubmit =async (e)=>{
         e.preventDefault();
-        // validate date of birth is atleast 10 years
-        const currentDate = new Date();
-        const birthDate = new Date(dateofbirth);
-        const diffInYears = (currentDate - birthDate) / (1000 * 60 * 60 * 24 * 365);
-        if (diffInYears < 10) {
-            setNotification("");
-            setEmailError("");
-            alert("Date of birth must be at least 10 years old.");
-            return;
-        }
 
-        if (!validator.isEmail(email)) {
-            setEmailError("Please enter a valid email address");
-            return;
-        }
         try {
             await axios.post("http://localhost:8080/student", student)
             //show noti
@@ -53,6 +46,7 @@ export default function AddNewStudents() {
                 dateofbirth: "",
                 email: ""
             });
+            setNotification("");
         } catch (error) {
             console.error("Error:", error);
         }
@@ -78,6 +72,7 @@ export default function AddNewStudents() {
                 <div className="mb-3">
                 <label htmlFor="dateofbirth" className="form-label">Date Of Birth</label>
                 <input type="date" className="form-control" name="dateofbirth" id="dateofbirth" value={dateofbirth} onChange={(e)=>onInputChange(e)} required/>
+                {dobError && <div className="text-danger">{dobError}</div>}
                 </div>
 
                 <div className="mb-3">
