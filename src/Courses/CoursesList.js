@@ -27,7 +27,8 @@ export default function CoursesList() {
 
   return (
     <div className="container">
-      <div className="py-4">
+      <div className="row">
+        <div className="col-md-10 offset-md-1 border rounded p-4 mt-2 shadow">
         <table className="table">
           <thead>
             <tr>
@@ -55,5 +56,6 @@ export default function CoursesList() {
         </table>
       </div>
     </div>
+  </div>
   )
 }
