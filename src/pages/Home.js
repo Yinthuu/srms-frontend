@@ -37,7 +37,7 @@ export default function Home() {
                     <tr>
                     <th scope="row" key={index} > {index+1} </th>
                     <td>{result.course.coursename}</td>
-                    <td>{result.student.firstname}{result.student.lastname}</td>
+                    <td>{result.student.firstname} {result.student.familyname}</td>
                     <td>{result.student.dateofbirth}</td>
                     <td>{result.student.email}</td>
                     <td>{result.score}</td>
