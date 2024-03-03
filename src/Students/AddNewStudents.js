@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 
 export default function AddNewStudents() {
 
@@ -43,27 +42,27 @@ export default function AddNewStudents() {
     <div className="container">
         <div className="row">
             <div className="col-md-10 offset-md-1 border rounded p-4 mt-2 shadow">
-            <h2 className="text-center m-4">Add New Sudents</h2>
+            <h2 className="text-center m-4">Add New Sudent</h2>
             {notification && <div className="alert alert-success">{notification}</div>}
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="mb-3">
                 <label htmlFor="Firstname" className="form-label">First name</label>
-                <input type={"text"} className="form-control" name="firstname" value={firstname} onChange={(e)=>onInputChange(e)} />
+                <input type={"text"} className="form-control" name="firstname" value={firstname} onChange={(e)=>onInputChange(e)} required/>
                 </div>
 
                 <div className="mb-3">
                 <label htmlFor="Familyname" className="form-label">Family name</label>
-                <input type={"text"} className="form-control" name="familyname" value={familyname} onChange={(e)=>onInputChange(e)} />
+                <input type={"text"} className="form-control" name="familyname" value={familyname} onChange={(e)=>onInputChange(e)} required/>
                 </div>
 
                 <div className="mb-3">
-                <label htmlFor="Dateofbirth" className="form-label">Dateofbirth</label>
-                <input type={"text"} className="form-control" name="dateofbirth" value={dateofbirth} onChange={(e)=>onInputChange(e)} />
+                <label htmlFor="Dateofbirth" className="form-label">Date Of Birth</label>
+                <input type={"text"} className="form-control" name="dateofbirth" value={dateofbirth} onChange={(e)=>onInputChange(e)} required/>
                 </div>
 
                 <div className="mb-3">
                 <label htmlFor="Email" className="form-label">Email</label>
-                <input type={"text"} className="form-control" name="email" value={email} onChange={(e)=>onInputChange(e)} />
+                <input type={"text"} className="form-control" name="email" value={email} onChange={(e)=>onInputChange(e)} required/>
                 </div>
 
                 <div className="center-button">
