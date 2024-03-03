@@ -33,11 +33,10 @@ export default function StudentsList() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
+              <th scope="col">Name</th>
               <th scope="col">DOB</th>
-              <th scope="col">Email</th>
-              <th scope="col">Action</th>
+              <th scope="col">Email Address</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -46,8 +45,7 @@ export default function StudentsList() {
                 students.map((student, index) => (
                     <tr>
                     <th scope="row" key={index} > {index+1} </th>
-                    <td>{student.firstname}</td>
-                    <td>{student.familyname}</td>
+                    <td>{student.firstname} {student.familyname}</td>
                     <td>{student.dateofbirth}</td>
                     <td>{student.email}</td>
                     <td>
