@@ -2,10 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { BsX } from 'react-icons/bs';
+import { useParams } from "react-router-dom";
 import '../App.css';
 
 export default function StudentsList() {
     const [students,setStudents] = useState([])
+    //id of student to be deleted
+    const {id} = useParams();
 
     useEffect(()=>{
       loadStudents();
@@ -15,6 +18,14 @@ export default function StudentsList() {
       const result= await axios.get("http://localhost:8080/students");
       setStudents(result.data);
     }
+
+    //delete student
+    const deleteStudent = async (id) =>{
+      await axios.delete(`http://localhost:8080/student/${id}`)
+      loadStudents();
+    }
+
+
   return (
     <div className="container">
       <div className="py-4">
@@ -40,7 +51,7 @@ export default function StudentsList() {
                     <td>{student.dateofbirth}</td>
                     <td>{student.email}</td>
                     <td>
-                    <button className='btn'>
+                    <button className='btn' onClick={()=>deleteStudent(student.id)}>
                         <BsX className="delete-icon"/>
                     </button>
                     </td>
